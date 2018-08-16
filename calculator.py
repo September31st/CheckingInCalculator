@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 # 读取的excel地址
 from auto_install import import_tools
 
-inputExcel = "/Users/mylo/Desktop/6月李怡萱read.xls"
+inputExcel = "/Users/mylo/Desktop/6_input.xls"
 # 统计完写入的excel地址
 outputExcel = "/Users/mylo/Desktop/OverWorkExcel.xls"
 # 第几个sheet需要被统计 从0开始计算
@@ -106,10 +106,11 @@ def calculate():
     # tempId = 0
     # tempid = sheet.cell(427, 1).value.encode('utf-8')
     for over_work_index in range(len(cols)):
-        if cols[over_work_index].isdigit():
-            daka = staff.get(cols[over_work_index])
+        b = str(cols[over_work_index]).isdigit()
+        if b:
+            punch_clock = staff.get(cols[over_work_index])
             if cols[over_work_index] in staff:
-                daka.append(the_read_sheet.row_values(over_work_index))
+                punch_clock.append(the_read_sheet.row_values(over_work_index))
             else:
                 staff[cols[over_work_index]] = [the_read_sheet.row_values(over_work_index)]
 
